@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rns
+spec:
+  replicas: 4
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: rns
+  template:
+    metadata:
+      labels:
+        app: rns
+    spec:
+      containers:
+      - image: 324898396996.dkr.ecr.ap-southeast-2.amazonaws.com/rns:latest
+        name: rns
+        ports:
+        - containerPort: 8095
+        resources:
+          requests:
+            memory: "60Mi"
+            cpu: "65m"
+          limits:
+            memory: "65Mi"
+            cpu: "70m"
