@@ -21,8 +21,10 @@ spec:
         resources:
           requests:
             memory: "1024Mi"
+            cpu: "1000m"
           limits:
             memory: "1024Mi"
+            cpu: "1000m"
         readinessProbe:
           httpGet:
             path: /RoadNameWS/getAllLGAs
