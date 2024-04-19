@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: rns
 spec:
-  replicas: 4
+  replicas: 2
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -20,8 +20,12 @@ spec:
         - containerPort: 8095
         resources:
           requests:
-            memory: "60Mi"
-            cpu: "65m"
+            memory: "1024Mi"
           limits:
-            memory: "65Mi"
-            cpu: "70m"
+            memory: "1024Mi"
+        readinessProbe:
+          httpGet:
+            path: /RoadNameWS/getAllLGAs
+            port: 8095
+          initialDelaySeconds: 120
+          periodSeconds: 60
